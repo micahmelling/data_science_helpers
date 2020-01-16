@@ -4,14 +4,14 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="data_science_helpers", # Replace with your own username
+    name="data_science_helpers",
     version="0.0.1",
-    author="Example Author",
-    author_email="author@example.com",
-    description="A small example package",
+    author="Micah Melling",
+    author_email="micahmelling@gmail.com",
+    description="Common data science helper functions",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pypa/sampleproject",
+    url="https://github.com/micahmelling",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
