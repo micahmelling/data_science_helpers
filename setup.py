@@ -12,6 +12,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/micahmelling",
+    packages=['ds_helpers'],
     install_requires=['boto3'],
     classifiers=[
         "Programming Language :: Python :: 3",
