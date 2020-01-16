@@ -90,7 +90,7 @@ def download_folder_from_s3(bucket, directory):
     # file.write("testing...testing...testing")
     # file.close()
 
-    # upload_file_to_s3('sample.txt', 'full-stack-data-science', 'data-science-files2')
+    # upload_file_to_s3('sample.txt', 'full-stack-data-science', 'data-science-files')
     # download_file_from_s3('sample.txt', 'full-stack-data-science')
-    # download_folder_from_s3('full-stack-data-science', 'data-science-files2')
+    # download_folder_from_s3('full-stack-data-science', 'data-science-files')
 
