@@ -1,5 +1,6 @@
 import logging
 import boto3
+import json
 import os
 import botocore
 from botocore.exceptions import ClientError
@@ -10,7 +11,6 @@ def create_bucket_if_not_exists(bucket):
     Creates and S3 bucket if it does not already exists.
     :param bucket: name of S3 bucket
     :type bucket: str
-    :return: None
     """
     s3 = boto3.resource('s3')
     exists = s3.Bucket(bucket) in s3.buckets.all()
@@ -28,7 +28,6 @@ def upload_file_to_s3(file_name, bucket, directory=''):
     :type bucket: str
     :param directory: the name of the directory in which to put the file; default is root
     :type directory: str
-    :return: None
     """
     create_bucket_if_not_exists(bucket)
     s3_client = boto3.client('s3')
@@ -72,7 +71,6 @@ def download_folder_from_s3(bucket, directory):
     :type bucket: str
     :param directory: directory in S3 we want to download
     :type directory: str
-    :return: None
     """
     s3_resource = boto3.resource('s3')
     bucket = s3_resource.Bucket(bucket)
@@ -82,15 +80,21 @@ def download_folder_from_s3(bucket, directory):
         bucket.download_file(object.key, object.key)
 
 
-# if __name__ == "__main__":
-    # https://boto3.amazonaws.com/v1/documentation/api/latest/guide/s3-uploading-files.html
-    # aws key and secret in bash_profile
-
-    # file = open("sample.txt", "w")
-    # file.write("testing...testing...testing")
-    # file.close()
-
-    # upload_file_to_s3('sample.txt', 'full-stack-data-science', 'data-science-files')
-    # download_file_from_s3('sample.txt', 'full-stack-data-science')
-    # download_folder_from_s3('full-stack-data-science', 'data-science-files')
-
+def get_secrets_manager_secret(secret_name, region='us-west-2'):
+    """
+    Retrieves a secret from AWS Secrets Manager, a password manager.
+    :param secret_name: name of the secret
+    :type secret_name: str
+    :param region: name of the AWS region; default is us-west-2
+    :type region: str
+    :return: dictionary with the secret keys and values
+    """
+    session = boto3.session.Session()
+    client = session.client(
+        service_name='secretsmanager',
+        region_name=region
+    )
+    secret_value_response = client.get_secret_value(SecretId=secret_name)
+    for key, value in secret_value_response.items():
+        if key == 'SecretString':
+            return json.loads(value)
