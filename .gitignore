@@ -14,5 +14,7 @@ __pycache__/
 venv/
 scratch.py
 scratch/
+dist/
+data_science_helpers.egg-info/
 create_ml_project_structure.sh
-
+index.html

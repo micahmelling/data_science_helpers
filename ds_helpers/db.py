@@ -12,7 +12,7 @@ def connect_to_mysql(connection_dictionary):
     host = connection_dictionary['host']
     user = connection_dictionary['user']
     password = connection_dictionary['password']
-    database = connection_dictionary['databas']
+    database = connection_dictionary['database']
     engine = sqlalchemy.create_engine(f'mysql+pymysql://{user}:{password}@{host}:3306/{database}',
                                       connect_args=ssl_args)
     return engine
