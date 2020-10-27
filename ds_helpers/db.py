@@ -1,14 +1,16 @@
 import sqlalchemy
 
 
-def connect_to_mysql(connection_dictionary):
+def connect_to_mysql(connection_dictionary, ssl_path='rds-ca-2019-root.pem'):
     """
     Connects to a MySQL database. Require the RDS pem file is in your working directory.
     :param connection_dictionary: dictionary containing keys for host, user, password, and database
     :type connection_dictionary: dictionary
+    :param ssl_path: path to the RDS ssl file
+    :type ssl_path: path or path represented as string
     :return: sqlalchemy connection
     """
-    ssl_args = {'ssl': {'ca': 'rds-ca-2019-root.pem'}}
+    ssl_args = {'ssl': {'ca': ssl_path}}
     host = connection_dictionary['host']
     user = connection_dictionary['user']
     password = connection_dictionary['password']
