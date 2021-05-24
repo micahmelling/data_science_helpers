@@ -4,6 +4,7 @@ import sqlalchemy
 def connect_to_mysql(connection_dictionary, ssl_path='rds-ca-2019-root.pem'):
     """
     Connects to a MySQL database. Require the RDS pem file is in your working directory.
+
     :param connection_dictionary: dictionary containing keys for host, user, password, and database
     :type connection_dictionary: dictionary
     :param ssl_path: path to the RDS ssl file
@@ -23,6 +24,7 @@ def connect_to_mysql(connection_dictionary, ssl_path='rds-ca-2019-root.pem'):
 def write_dataframe_to_database(df, schema, table, db_conn):
     """
     Writes a dataframe to a database table
+
     :param df: dataframe we want to record
     :type df: pandas dataframe
     :param schema: name of the schema
@@ -38,6 +40,7 @@ def dynamically_create_ddl_and_execute(df, schema, table, db_conn):
     """
     Creates a DDL statement based on the inputted dataframe, which includes an id column and a meta__inserted_at
     column. Executes the DDL to create the table.
+
     :param df: dataframe we want to use to construct the ddl statement
     :type df: pandas dataframe
     :param schema: name of the schema in which the table will go
