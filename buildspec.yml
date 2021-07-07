@@ -42,7 +42,7 @@ phases:
       - echo pushing docker image...
       - docker push $REPOSITORY_URI:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
-      - printf '[{"name":"python-library","imageUri":"%s"}]' $REPOSITORY_URI:latest > taskdefinition.json
+      - printf '[{"name":"task-def-name","imageUri":"%s"}]' $REPOSITORY_URI:latest > taskdefinition.json
 artifacts:
   files:
     - '**/*'
