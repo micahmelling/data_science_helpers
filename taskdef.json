@@ -1,9 +1,9 @@
 {
-    "executionRoleArn": "arn:aws:iam::469808146940:role/python-library-role",
+    "executionRoleArn": "role-arn",
     "containerDefinitions": [
         {
-            "name": "python-library",
-            "image": "469808146940.dkr.ecr.us-west-2.amazonaws.com/data-science-helpers:latest",
+            "name": "name",
+            "image": "image-uri:latest",
             "essential": true,
             "portMappings": [
                 {
@@ -20,5 +20,5 @@
     "networkMode": "awsvpc",
     "cpu": "256",
     "memory": "512",
-    "family": "python-library"
+    "family": "name"
 }
