@@ -97,7 +97,7 @@ def download_file_from_s3(file_name, bucket, directory=''):
 def download_directory_from_s3(bucket, directory):
     """
     Downloads a folder in S3 and all of its contents into a local directory.
-    
+
     :param bucket: name of the bucket in S3 where the directory lives
     :type bucket: str
     :param directory: directory in S3 we want to download
